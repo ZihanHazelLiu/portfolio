@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazel (Zihan) Liu</title>
+<meta name="description" content="PhD student in Informatics at the University of Illinois Urbana-Champaign, studying how conversational AI shapes human meaning-making in interpretive domains.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Source+Serif+4:opsz,wght@8..60,300..600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FAF7F1;
+  --text: #1F1B16;
+  --muted: #5C544A;
+  --accent: #8B4A35;
+  --border: #E5DCC7;
+  --hover-bg: #F2EBDC;
+  --max-width: 720px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  z-index: 100;
+}
+.skip-link:focus { top: 0; }
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(250, 247, 241, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+  padding: 1rem 1.5rem;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  font-variation-settings: "SOFT" 50;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover, nav a:focus { color: var(--accent); }
+
+/* Main container */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+/* Hero */
+.hero {
+  margin-bottom: 6rem;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+.hero h1 .alt-name {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+}
+.hero .role {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+.hero .lede {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-family: 'Fraunces', serif;
+  font-weight: 350;
+  letter-spacing: -0.005em;
+  font-variation-settings: "SOFT" 100;
+}
+.hero .lede em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.hero-social {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+.hero-social-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-social a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-social a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.hero-social svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Section labels */
+.section-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* Sections */
+section {
+  margin-bottom: 5rem;
+  animation: fadeUp 0.8s ease-out backwards;
+}
+section:nth-of-type(1) { animation-delay: 0.1s; }
+section:nth-of-type(2) { animation-delay: 0.2s; }
+section:nth-of-type(3) { animation-delay: 0.3s; }
+section:nth-of-type(4) { animation-delay: 0.4s; }
+
+section h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 1.85rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.015em;
+  font-variation-settings: "SOFT" 50;
+}
+
+/* About section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 2.5rem;
+  align-items: start;
+}
+.about p {
+  margin-bottom: 1.25rem;
+}
+.about p:last-child { margin-bottom: 0; }
+.about strong {
+  font-weight: 600;
+  color: var(--accent);
+}
+.about a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.about a:hover { border-bottom-color: var(--accent); }
+
+.about-photo {
+  position: relative;
+}
+.about-photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  filter: grayscale(0.2) contrast(1.02);
+  transition: filter 0.4s ease;
+}
+.about-photo img:hover { filter: grayscale(0) contrast(1); }
+.about-photo .photo-fallback {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px dashed var(--border);
+  background: var(--hover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* Projects */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.project {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+}
+.project-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 1.85rem;
+  color: var(--accent);
+  line-height: 1;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100;
+  padding-top: 0.15rem;
+}
+.project-content h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  font-variation-settings: "SOFT" 30;
+}
+.project-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.project-content p {
+  margin-bottom: 1rem;
+}
+.project-content em {
+  color: var(--accent);
+  font-style: italic;
+}
+.project-figure {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  background: var(--hover-bg);
+  position: relative;
+  overflow: hidden;
+}
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.project-figure-inner {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 1rem;
+  gap: 0.4rem;
+}
+.project-figure-inner small {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+.project-link {
+  display: inline-block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.project-link:hover {
+  opacity: 0.75;
+  transform: translateX(2px);
+}
+
+/* Publications */
+.publications {
+  border-top: 1px solid var(--border);
+}
+.publication {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.publication-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+.publication-authors {
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+  font-size: 0.92rem;
+}
+.publication-authors .me {
+  color: var(--text);
+  font-weight: 600;
+}
+.publication-venue {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.publication a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.publication a:hover { border-bottom-color: var(--accent); }
+.scholar-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.scholar-note a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+}
+.skills-grid dt {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--muted);
+}
+.cv-link {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  font-size: 0.95rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.cv-link:hover {
+  opacity: 0.75;
+  transform: translateX(2px);
+}
+
+/* Teaching/Service list */
+.service-list {
+  list-style: none;
+  font-size: 0.98rem;
+  border-top: 1px solid var(--border);
+}
+.service-list li {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.service-list strong {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+}
+.service-list .meta {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Contact */
+.contact-list {
+  list-style: none;
+  font-size: 1.02rem;
+}
+.contact-list li {
+  padding: 0.65rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.contact-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-list a:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+.contact-list .label {
+  display: inline-block;
+  min-width: 90px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: 'Fraunces', serif;
+}
+
+/* Footer */
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  main { padding: 3rem 1.25rem 4rem; }
+  header { padding: 0.75rem 1rem; }
+  nav ul { gap: 1.1rem; font-size: 0.72rem; }
+  .hero { margin-bottom: 4rem; }
+  section { margin-bottom: 4rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-photo { max-width: 200px; }
+  .skills-grid { grid-template-columns: 1fr; gap: 0.25rem 0; }
+  .skills-grid dd { margin-bottom: 0.85rem; }
+  .project { grid-template-columns: 1fr; gap: 0.4rem; }
+  .project-num { font-size: 1.4rem; }
+  .contact-list .label { min-width: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="header-inner">
+    <span class="site-title">Hazel Liu</span>
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <h1 id="hero-heading">Hazel <span class="alt-name">(Zihan)</span> Liu</h1>
+    <p class="role">PhD Student in Informatics, University of Illinois Urbana-Champaign</p>
+    <p class="lede">I study how conversational AI shapes human meaning-making in <em>interpretive domains</em> — contexts where meaning is subjective and without a single correct answer, like humor, social norms, and emotional uncertainty — and what this implies for how people think, judge, and communicate with and through AI.</p>
+    <div class="hero-social" aria-label="Find me online">
+      <span class="hero-social-label">Find me on</span>
+      <a href="https://scholar.google.com/citations?user=gTOBw9EAAAAJ&hl=en" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0.5 9.5 12 1l11.5 8.5-4.742 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        Google Scholar
+      </a>
+      <a href="mailto:zihanl18@illinois.edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-heading">
+    <span class="section-label">About</span>
+    <h2 id="about-heading">A few things about me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I came to this PhD wanting to understand the work of interpretation itself — the way people make sense of confusing emotional moments, the subconscious processes behind judgment, the way meaning is found rather than given. My research grew out of that curiosity. I study conversational AI not primarily as a productivity tool, but as a force that shapes how people think when there isn't a single right answer.</p>
+        <p>My work moves across human-computer interaction, computational social science, and AI in education. I'm currently looking for <strong>research internship opportunities for Summer 2026</strong>.</p>
+        <p>Before UIUC, I worked with <a href="https://yichiehlee.com/" target="_blank" rel="noopener">Prof. Yi-Chieh Lee</a> at the National University of Singapore on cross-cultural studies of conversational agents, and earned my B.S. in Software Engineering from Sichuan University. I share my apartment with two cats, 小黑 and 小奶牛.</p>
+      </div>
+      <figure class="about-photo">
+        <!-- Replace with your headshot. Drop it into images/portrait.jpg in this repo. -->
+        <img src="image/zihan.jpg" alt="Portrait of Hazel Liu" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback" style="display:none;">Add your photo at <code style="font-style:normal;background:var(--bg);padding:1px 4px;border-radius:2px;">image/zihan.jpg</code></div>
+      </figure>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-heading">
+    <span class="section-label">Selected work</span>
+    <h2 id="projects-heading">Projects</h2>
+    <div class="projects">
+
+      <article class="project">
+        <div class="project-num">01</div>
+        <div class="project-content">
+          <h3>The Social Gaze of LLMs: A Systematic Review of Multimodal Approaches to Human Behavior Understanding</h3>
+          <p class="project-meta">First author · 2025 · arXiv preprint, under review · with Yun Huang (UIUC)</p>
+          <p>LLM-powered multimodal systems are increasingly used to interpret human social behavior — in classrooms, clinics, robots, and surveillance settings — yet there has been no systematic account of how researchers actually apply these models' "social competence." I led a systematic review of 176 publications across HCI, AI, healthcare, and education, developing a four-dimensional coding framework (application, technical, evaluative, ethical) and a human-in-the-loop, LLM-assisted coding pipeline.</p>
+          <p>The review surfaces four interlocking patterns: a heavy concentration on social <em>perception</em> and <em>reasoning</em> with little work on <em>interaction</em> or <em>creativity</em>; a "modality-to-text bottleneck" that compresses rich audiovisual signals into transcripts before reasoning; evaluation practices that privilege static benchmarks over socially grounded human-centered assessment; and ethical engagement that addresses privacy concretely while leaving fairness and societal harms largely unmitigated. From these patterns I argue that <em>social creativity</em> — the capacity to generate multiple plausible interpretations of an ambiguous social situation — is a research opportunity that current convergent design paradigms systematically underdevelop.</p>
+          <figure class="project-figure">
+            <img src="image/socialgaze.png" alt="Conceptual framework diagram showing four dimensions of social intelligence analysis: Social Intelligence Functions, Social Context, Interaction Context, and Social Intelligence Competency">
+          </figure>
+          <a class="project-link" href="https://arxiv.org/abs/2510.23947" target="_blank" rel="noopener">Read the paper →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-num">02</div>
+        <div class="project-content">
+          <h3>Understanding Public Perceptions of AI Conversational Agents: A Cross-Cultural Analysis</h3>
+          <p class="project-meta">First author · CHI 2024 · with Y.-C. Lee (NUS), R. Zhang, A. Chen, H. Li</p>
+          <p>This was the first large-scale computational study of how culture shapes public perceptions of conversational agents. Working with approximately one million social media posts from Twitter (U.S.) and Sina Weibo (China) collected over a five-year window, my collaborators and I combined BERTopic for thematic analysis with S-WEAT — a word-embedding adaptation of the Word Embedding Association Test — to measure perceptions of CAs along three dimensions: warmth, competence, and emotional valence.</p>
+          <p>Several findings reframe how the field thinks about CA design. Chinese users approach CAs hedonically — repurposing utilitarian assistants like Siri for socio-emotional play — and perceive voice-based and physically embodied CAs as warmer and more competent. U.S. users approach them functionally with an ambivalent emotional tone. Across both countries, <em>warmth perception</em> is the strongest predictor of positive emotional valence, outweighing competence. We argue for a "warmth primacy" approach to CA design and a context-conscious stance: a feature that helps in one cultural setting can backfire in another.</p>
+          <figure class="project-figure">
+            <img src="image/cross.png" alt="Heatmap comparing warmth, competence, and emotional valence perceptions of conversational agents across the US and China, broken down by technical characteristics">
+          </figure>
+          <a class="project-link" href="https://doi.org/10.1145/3613904.3642840" target="_blank" rel="noopener">Read the paper →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-num">03</div>
+        <div class="project-content">
+          <h3>AI-Enhanced Speech-Language Intervention Documentation: Opportunities and Design Goals</h3>
+          <p class="project-meta">Co-author · AIED 2025 · with Q. Zheng, A. Choudhry, Y. Huang, J. Xiong</p>
+          <p>Speech-language pathologists face crushing documentation workloads — SOAP notes for every session, often written from memory after the fact — that contribute directly to burnout and reduced time for actual care. This project is a formative human-centered study of how vision-language models could support that work. We conducted think-aloud sessions with 17 SLPs, having them review AI-generated session analyses produced by GPT-4V and iteratively refine the prompts that produced them.</p>
+          <p>My contribution centered on translating the team's qualitative findings into a structured Prompt Sheet — a tool that helps AI engineers embed task-specific, developmental, and individualized context into LLM-driven documentation. The Sheet operationalizes three <em>fluidity</em> requirements that current systems systematically fail: contextual fluidity (distinguishing structured practice from spontaneous skill use), assessment fluidity (knowing when not to flag an error outside the current learning focus), and individual fluidity (recognizing non-standard behaviors as engagement rather than disengagement). The deeper finding: accurate AI-assisted behavior interpretation requires embedding the kind of nuanced, person-specific knowledge that clinicians carry — knowledge that resists easy formalization.</p>
+          <figure class="project-figure">
+            <img src="image/aied.png" alt="Prompt Sheet table showing prompt templates for contextual, assessment, and individual fluidity, with example wishes and example prompts from speech-language pathologists">
+          </figure>
+          <a class="project-link" href="https://doi.org/10.1007/978-3-031-98465-5_17" target="_blank" rel="noopener">Read the paper →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="publications" aria-labelledby="publications-heading">
+    <span class="section-label">Full list</span>
+    <h2 id="publications-heading">Publications</h2>
+    <div class="publications">
+
+      <div class="publication">
+        <div class="publication-title">The Social Gaze of LLMs: A Literature Review of Multimodal Approaches to Human Behavior Understanding</div>
+        <div class="publication-authors"><span class="me">Zihan Liu</span>, Parisa Rabbani, Veda Duddu, Kyle Fan, Madison Lee, Yun Huang</div>
+        <div class="publication-venue">arXiv preprint, 2025 · <a href="https://arxiv.org/abs/2510.23947" target="_blank" rel="noopener">arxiv.org/abs/2510.23947</a></div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">AI-Enhanced Speech-Language Intervention Documentation: Opportunities and Design Goals</div>
+        <div class="publication-authors">Qingxiao Zheng, Abhinav Choudhry, <span class="me">Zihan Liu</span>, Parisa Rabbani, Yuting Hu, Abbie Olszewski, Yun Huang, Jinjun Xiong</div>
+        <div class="publication-venue">International Conference on AI in Education (AIED), 2025 · <a href="https://doi.org/10.1007/978-3-031-98465-5_17" target="_blank" rel="noopener">link</a></div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">Understanding How Psychological Distance Influences User Preferences in Conversational versus Web Search</div>
+        <div class="publication-authors">Yitian Yang, Yugin Tan, Yang Chen Lin, Jung-Tai King, <span class="me">Zihan Liu</span>, Yi-Chieh Lee</div>
+        <div class="publication-venue">CHI Conference on Human Factors in Computing Systems (CHI), 2025</div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">Understanding Public Perceptions of AI Conversational Agents: A Cross-Cultural Analysis</div>
+        <div class="publication-authors"><span class="me">Zihan Liu</span>, Han Li, Anfan Chen, Renwen Zhang, Yi-Chieh Lee</div>
+        <div class="publication-venue">CHI Conference on Human Factors in Computing Systems (CHI), 2024 · <a href="https://doi.org/10.1145/3613904.3642840" target="_blank" rel="noopener">link</a></div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">AI Privacy in Context: A Comparative Study of Discourse on Conversational AI Privacy on US and Chinese Social Media</div>
+        <div class="publication-authors">Renwen Zhang, Han Li, Anfan Chen, <span class="me">Zihan Liu</span>, Yi-Chieh Lee</div>
+        <div class="publication-venue">Social Media + Society, 2024 (special issue: Comparative Approaches to Studying Privacy)</div>
+      </div>
+
+      <div class="publication">
+        <div class="publication-title">A Multi-Objective Genetic Optimization Algorithm for Charger Selection in Static Charger Deployment Scheme for WRSN</div>
+        <div class="publication-authors">Hong Liu, Lingyun Zhong, <span class="me">Zihan Liu</span>, Feng Lin</div>
+        <div class="publication-venue">IEEE 14th International Conference on Advanced Infocomm Technology (ICAIT), 2022</div>
+      </div>
+
+    </div>
+    <p class="scholar-note">A complete and up-to-date list is also available on <a href="https://scholar.google.com/citations?user=gTOBw9EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  </section>
+
+  <section id="cv" aria-labelledby="cv-heading">
+    <span class="section-label">Background</span>
+    <h2 id="cv-heading">Skills &amp; Tools</h2>
+    <dl class="skills-grid">
+      <dt>Programming</dt>
+      <dd>Python, Java, C, SQL, HTML/CSS, Spring Boot, Flask</dd>
+      <dt>Data &amp; Analysis</dt>
+      <dd>pandas, NumPy, Matplotlib, seaborn, Jupyter</dd>
+      <dt>NLP &amp; ML</dt>
+      <dd>BERTopic, Word2Vec, S-WEAT, topic modeling, text mining, LLM prompting</dd>
+      <dt>Methods</dt>
+      <dd>Computational social science, mixed-methods HCI, qualitative coding (with LLM-assisted pipelines), cross-cultural research design</dd>
+      <dt>Languages</dt>
+      <dd>Chinese (native), English (fluent)</dd>
+    </dl>
+    <a class="cv-link" href="CV.pdf" target="_blank" rel="noopener">Download full CV (PDF) →</a>
+  </section>
+
+  <section id="teaching" aria-labelledby="teaching-heading">
+    <span class="section-label">In the field</span>
+    <h2 id="teaching-heading">Teaching &amp; Service</h2>
+    <ul class="service-list">
+      <li>
+        <strong>Graduate Teaching Assistant</strong> — IS 457: Data Storytelling
+        <span class="meta"> · Fall 2025, Spring 2026 · UIUC</span>
+      </li>
+      <li>
+        <strong>External Reviewer</strong> — ACM CHI Conference on Human Factors in Computing Systems
+        <span class="meta"> · 2026</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-heading">
+    <span class="section-label">Get in touch</span>
+    <h2 id="contact-heading">Contact</h2>
+    <ul class="contact-list">
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:zihanl18@illinois.edu">zihanl18@illinois.edu</a>
+      </li>
+      <li>
+        <span class="label">Scholar</span>
+        <a href="https://scholar.google.com/citations?user=gTOBw9EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      </li>
+      <li>
+        <span class="label">Location</span>
+        Urbana, Illinois
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Hand-built, with two cats nearby. Last updated April 2026.
+</footer>
+
+</body>
+</html>
